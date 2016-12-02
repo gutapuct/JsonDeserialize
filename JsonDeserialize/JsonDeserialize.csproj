@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMyObject.cs" />
+    <Compile Include="IMyObjectSerializer.cs" />
+    <Compile Include="MyObjectSerializer.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="MyObject.cs" />
     <Compile Include="Program.cs" />

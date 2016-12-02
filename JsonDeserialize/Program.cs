@@ -35,7 +35,8 @@ namespace json
             jsonObject.AddProperty("trailing-comma", new object[] { true, innerObject });
             jsonObject.AddProperty("no-trailing-whitespace");
 
-            Console.WriteLine(jsonObject.ToString());
+            var serializer = new MyObjectSerializer();
+            Console.WriteLine(serializer.Serialize(jsonObject));
 
             Console.ReadKey();
         }

@@ -8,9 +8,4 @@ namespace JsonDeserialize
         Property GetPropertyByName(string name);
         List<Property> GetProperties();
     }
-
-    public interface IMyObjectSerialize
-    {
-        string ToString();
-    }
 }
