@@ -1,8 +1,0 @@
-C:\src\Property\JsonDeserialize\JsonDeserialize\bin\Debug\JsonDeserialize.exe.config
-C:\src\Property\JsonDeserialize\JsonDeserialize\bin\Debug\JsonDeserialize.exe
-C:\src\Property\JsonDeserialize\JsonDeserialize\bin\Debug\JsonDeserialize.pdb
-C:\src\Property\JsonDeserialize\JsonDeserialize\bin\Debug\Newtonsoft.Json.dll
-C:\src\Property\JsonDeserialize\JsonDeserialize\bin\Debug\Newtonsoft.Json.xml
-C:\src\Property\JsonDeserialize\JsonDeserialize\obj\Debug\JsonDeserialize.csprojResolveAssemblyReference.cache
-C:\src\Property\JsonDeserialize\JsonDeserialize\obj\Debug\JsonDeserialize.exe
-C:\src\Property\JsonDeserialize\JsonDeserialize\obj\Debug\JsonDeserialize.pdb

@@ -10,6 +10,5 @@ namespace JsonDeserialize
         Property GetPropertyByName(string name);
         List<Property> GetPropertiesByValue(object value);
         List<Property> GetProperties();
-        //test
     }
 }
