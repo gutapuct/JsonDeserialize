@@ -1,0 +1,11 @@
+.vs/JsonDeserialize/v14/.suo
+*/obj/*
+.vs/*
+*/bin/*
+*.dbmdl
+*.jfm
+*/bin/Debug/*
+*/obj/Debug/*
+*.pdb
+*.exe
+*.txt
