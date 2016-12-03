@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IJsonSerializer.cs" />
     <Compile Include="Interfaces\IMyObject.cs" />
     <Compile Include="Interfaces\IMyObjectSerializer.cs" />
+    <Compile Include="Models\JsonSerializer.cs" />
     <Compile Include="Models\MyObjectSerializer.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Interfaces\MyObject.cs" />

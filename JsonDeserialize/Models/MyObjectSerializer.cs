@@ -9,7 +9,7 @@ namespace JsonDeserialize
 {
     class MyObjectSerializer : IMyObjectSerializer
     {
-        public StringBuilder result = new StringBuilder();
+        public StringBuilder result = new StringBuilder("[\r\n");
         public string Serialize(IMyObject myObject)
         {
             foreach (var property in myObject.GetProperties())
@@ -30,7 +30,7 @@ namespace JsonDeserialize
                 }
             }
 
-            return result.Remove(result.Length - 3, 3).ToString();
+            return result.Remove(result.Length - 3, 3).Append("\r\n]").ToString();
         }
 
         private void ParseAndSaveValueObject(object value)
