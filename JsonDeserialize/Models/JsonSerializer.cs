@@ -13,28 +13,64 @@ namespace JsonDeserialize
 
         public List<IMyObject> ParseJsonToMyObject(string json)
         {
-            json = json.Replace("\r", "").Replace("\n", "").Replace("\"", "").Replace(" ", "");
-            json = json.Replace("{", "{\r\n").Replace("}", "\r\n}").Replace(",", ",\r\n");
+            json = json.Replace("\r", "").Replace("\n", "");
+            json = json.Substring(1, json.Length - 2);
 
-            var lines = json.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            MyObject myObject = new MyObject();
+            StringBuilder name = new StringBuilder();
+            StringBuilder value = new StringBuilder();
+            var isName = false;
+            var isValue = false;
+            var isObject = false;
+            MyObject myObjet = new MyObject();
 
-            foreach (var line in lines)
+            for (var i = 0; i < json.Length; i++)
             {
-                var pair = line.Split(':');
-                if (pair.Length == 2)
+                if (json[i] == '{')
                 {
-                    var value = pair[1].Trim();
-                    if (value.EndsWith(",")) value = value.Trim().Remove(value.Length - 1, 1);
-                    myObject.AddProperty(pair[0].Trim(), value);
+                    myObjet = new MyObject();
+                    continue;
                 }
-                else if(pair[0].Trim().Contains("{"))
+                if (json[i] == '"' && !isName && !isValue)
                 {
-                    myObject = new MyObject();
+                    isName = true;
+                    continue;
                 }
-                else if (pair[0].Trim().Contains("}"))
+                if (json[i] == '"' && isName && json[i + 1] == ':' && name.Length > 0)
                 {
-                    _myObjects.Add(myObject);
+                    i++;
+                    isName = false;
+                    isValue = true;
+                    continue;
+                }
+                if (isName)
+                {
+                    name.Append(json[i]);
+                    continue;
+                }
+                if (json[i] == ',' && name.Length > 0 && !isObject)
+                {
+                    myObjet.AddProperty(name.ToString(), (object)value);
+                    isName = false;
+                    isValue = false;
+                    name = new StringBuilder();
+                    value = new StringBuilder();
+                    continue;
+                }
+                if (json[i] == '}' && name.Length > 0)
+                {
+                    myObjet.AddProperty(name.ToString(), (object)value);
+                    _myObjects.Add(myObjet);
+                    isName = false;
+                    isValue = false;
+                    name = new StringBuilder();
+                    value = new StringBuilder();
+                }
+                if (isValue)
+                {
+                    if (json[i] == '[') isObject = true;
+                    value.Append(json[i]);
+                    if (json[i] == ']') isObject = false;
+                    continue;
                 }
             }
 
