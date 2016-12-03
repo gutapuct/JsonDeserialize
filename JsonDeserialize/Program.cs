@@ -30,8 +30,8 @@ namespace json
 
             var innerObject = new MyObject();
             innerObject.AddProperty("multiline", "never");
-            innerObject.AddProperty("singleline", "never");
-
+            innerObject.AddProperty("singleline", "never2");
+            
             jsonObject.AddProperty("trailing-comma", new object[] { true, innerObject });
             jsonObject.AddProperty("no-trailing-whitespace");
 

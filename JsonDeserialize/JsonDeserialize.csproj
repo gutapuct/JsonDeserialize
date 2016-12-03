@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMyObject.cs" />
-    <Compile Include="IMyObjectSerializer.cs" />
-    <Compile Include="MyObjectSerializer.cs" />
-    <Compile Include="Property.cs" />
-    <Compile Include="MyObject.cs" />
+    <Compile Include="Interfaces\IMyObject.cs" />
+    <Compile Include="Interfaces\IMyObjectSerializer.cs" />
+    <Compile Include="Models\MyObjectSerializer.cs" />
+    <Compile Include="Models\Property.cs" />
+    <Compile Include="Interfaces\MyObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
