@@ -10,6 +10,13 @@ namespace JsonDeserialize
     public class JsonSerializer : IJsonSerializer
     {
         private List<IMyObject> _myObjects = new List<IMyObject>();
+        private Dictionary<char, char> Dictionary = new Dictionary<char, char>()
+        {
+             {'{', '}'},
+             {'[', ']'},
+             {'(', ')'},
+        };
+        private static Stack<char> Stack = new Stack<char>();
 
         public List<IMyObject> ParseJsonToMyObject(string json)
         {
@@ -75,6 +82,30 @@ namespace JsonDeserialize
             }
 
             return _myObjects;
+        }
+
+        public bool IsJsonValid(string json)
+        {
+            foreach (var symbol in json)
+            {
+                if (Dictionary.ContainsKey(symbol))
+                {
+                    Stack.Push(symbol);
+                }
+                else if (Dictionary.ContainsValue(symbol))
+                {
+                    if (Stack.Count == 0) return false;
+                    if (symbol == Dictionary.Where(i => i.Key == Stack.Peek()).Select(i => i.Value).First())
+                    {
+                        Stack.Pop();
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
     }
 }

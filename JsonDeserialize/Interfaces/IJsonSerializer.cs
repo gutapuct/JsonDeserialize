@@ -9,5 +9,6 @@ namespace JsonDeserialize.Interfaces
     public interface IJsonSerializer
     {
         List<IMyObject> ParseJsonToMyObject(string json);
+        bool IsJsonValid(string Json);
     }
 }
